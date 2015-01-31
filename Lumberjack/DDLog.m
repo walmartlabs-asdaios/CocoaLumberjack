@@ -469,14 +469,14 @@ static unsigned int numProcessors;
     // The numClasses method now tells us how many classes we have.
     // So we can allocate our buffer, and get pointers to all the class definitions.
     
-    Class *classes = (Class *)malloc(sizeof(Class) * numClasses);
+    Class *classes = (Class *)malloc(sizeof(Class) * (unsigned long)numClasses);
     if (classes == NULL) return nil;
     
     numClasses = objc_getClassList(classes, numClasses);
     
     // We can now loop through the classes, and test each one to see if it is a DDLogging class.
     
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:numClasses];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:(NSUInteger)numClasses];
     
     for (i = 0; i < numClasses; i++)
     {
@@ -779,7 +779,7 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy)
     }
     
     char *subStr;
-    NSUInteger subLen;
+    NSInteger subLen;
     
     if (lastSlash)
     {
@@ -815,7 +815,7 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy)
     if (copy)
     {
         return [[NSString alloc] initWithBytes:subStr
-                                        length:subLen
+                                        length:(NSUInteger)subLen
                                       encoding:NSUTF8StringEncoding];
     }
     else
@@ -825,7 +825,7 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy)
         // We can just tell NSString to point to a range within the string literal.
         
         return [[NSString alloc] initWithBytesNoCopy:subStr
-                                              length:subLen
+                                              length:(NSUInteger)subLen
                                             encoding:NSUTF8StringEncoding
                                         freeWhenDone:NO];
     }
