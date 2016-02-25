@@ -1,21 +1,21 @@
 #import "DynamicLogging.h"
 #import "PerformanceTesting.h"
-#import "DDLog.h"
+#import "DDLogMacros.h"
 
 #define FILENAME @"DynamicLogging"
 
 // Debug levels: off, error, warn, info, verbose
-static int ddLogLevel = LOG_LEVEL_WARN; // NOT CONST
+static DDLogLevel ddLogLevel = DDLogLevelWarning; // NOT CONST
 
 
 @implementation DynamicLogging
 
-+ (int)ddLogLevel
++ (DDLogLevel)ddLogLevel
 {
 	return ddLogLevel;
 }
 
-+ (void)ddSetLogLevel:(int)logLevel
++ (void)ddSetLogLevel:(DDLogLevel)logLevel
 {
 	ddLogLevel = logLevel;
 }

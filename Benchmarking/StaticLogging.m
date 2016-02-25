@@ -1,11 +1,11 @@
 #import "StaticLogging.h"
 #import "PerformanceTesting.h"
-#import "DDLog.h"
+#import "DDLogMacros.h"
 
 #define FILENAME @"StaticLogging " // Trailing space to match exactly the others in length
 
 // Debug levels: off, error, warn, info, verbose
-static const int ddLogLevel = LOG_LEVEL_WARN; // CONST
+static const DDLogLevel ddLogLevel = DDLogLevelWarning; // CONST
 
 
 @implementation StaticLogging
